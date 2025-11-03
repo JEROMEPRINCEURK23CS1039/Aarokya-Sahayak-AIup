@@ -5,6 +5,17 @@ const logger = require('../utils/logger');
 // Register new user
 exports.registerUser = async (req, res) => {
   try {
+    const { validationResult } = require('express-validator');
+    const errors = validationResult(req);
+    
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        success: false,
+        message: errors.array()[0].msg,
+        errors: errors.array()
+      });
+    }
+
     const { email, password, profile } = req.body;
 
     // Check if user already exists

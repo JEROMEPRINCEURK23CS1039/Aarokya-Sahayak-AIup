@@ -338,7 +338,7 @@ Now we need to link everything together!
 1. Find `ML_SERVICE_URL`
 2. Click **pencil icon** (Edit)
 3. Change to: **YOUR ML SERVICE URL** + `/api/ml/predict`
-4. Example: `https://aarogya-ml-service-xyz789.onrender.com/api/ml/predict`
+4. Example: `https://aarogya-ml-service.onrender.com/api/ml/predict`
 5. Click **"Save"**
 
 #### D. Save Changes

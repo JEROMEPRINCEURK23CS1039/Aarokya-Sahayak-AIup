@@ -27,27 +27,28 @@ const userSchema = new mongoose.Schema({
     },
     age: {
       type: Number,
-      required: [true, 'Age is required'],
       min: [1, 'Age must be at least 1'],
       max: [120, 'Age must be less than 120']
     },
     gender: {
       type: String,
-      required: [true, 'Gender is required'],
       enum: ['Male', 'Female', 'Other']
     },
     phone: {
       type: String,
       trim: true,
-      match: [/^[0-9]{10}$/, 'Please enter a valid 10-digit phone number']
+      validate: {
+        validator: function(v) {
+          return !v || /^[0-9]{10}$/.test(v);
+        },
+        message: 'Please enter a valid 10-digit phone number'
+      }
     },
     state: {
-      type: String,
-      required: [true, 'State is required']
+      type: String
     },
     district: {
-      type: String,
-      required: [true, 'District is required']
+      type: String
     }
   },
   medicalHistory: [{
