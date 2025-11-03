@@ -8,6 +8,7 @@ import os
 import logging
 
 # Configure logging
+# Updated: 2025-11-03 - Ensure models load correctly from ml-service directory
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
