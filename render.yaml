@@ -3,6 +3,7 @@ services:
   - type: web
     name: aarogya-ml-service
     env: python
+    runtime: python-3.11
     rootDir: ml-service
     buildCommand: |
       pip install --upgrade pip 
