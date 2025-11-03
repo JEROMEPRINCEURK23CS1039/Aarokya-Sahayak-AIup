@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Build & Test (server + client)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install & Test Backend
+        working-directory: server
+        run: |
+          npm ci
+          npm test --if-present
+
+      - name: Install & Build Frontend
+        working-directory: client
+        run: |
+          npm ci
+          npm run build
+
+      - name: Upload client build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: client-dist
+          path: client/dist
+
+      - name: CI complete
+        run: echo "Build and basic tests completed. Add secrets (MONGO_URI, JWT_SECRET, ML_SERVICE_URL) in repo Settings to enable deploy steps."

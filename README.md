@@ -123,3 +123,29 @@ ML_SERVICE_URL=http://localhost:5001/api/ml/predict
 **PKL Files Not Found:** Copy `disease_predictor_v2.pkl` and `processed_data_info.pkl` to `ml-service/` directory
 
 For detailed documentation, see inline comments in source files.
+
+## 📦 Pushing this repository to GitHub
+
+I prepared a small helper script to initialize the local repository and make the first commit: `setup-github.bat`.
+
+To create a remote repository on GitHub and push:
+
+1. Create a new repository on GitHub: https://github.com/new
+2. Run the setup script locally (after installing Git):
+
+```powershell
+cd "C:\Users\jancy\Desktop\3rd Ia web tech"
+.
+setup-github.bat
+```
+
+Alternatively, to configure the remote and push from the command line (replace with your repo URL):
+
+```powershell
+git branch -M main
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+git push -u origin main
+```
+
+Note: The included `setup-github.bat` configures the local git user email to `jeromeprince@karunya.edu.in`. If you prefer a different email or name, edit the script or run `git config user.email` / `git config user.name` as appropriate.
+
