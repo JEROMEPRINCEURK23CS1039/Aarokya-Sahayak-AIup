@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: aarogya-ml-service
+    env: python
+    rootDir: ml-service
+    buildCommand: |
+      pip install --upgrade pip 
+      pip install -r requirements.txt 
+      cp ../disease_predictor_v2.pkl . 
+      cp ../processed_data_info.pkl .
+    startCommand: gunicorn -w 2 -b 0.0.0.0:$PORT app:app
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: AAROGYA_ML_MODELS_DIR
+        value: .
+    healthCheckPath: /health
+    autoDeploy: true
