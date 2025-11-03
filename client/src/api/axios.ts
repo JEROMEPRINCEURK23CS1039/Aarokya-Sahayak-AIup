@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '/api/v1',
+  baseURL: 'https://aarogya-backend-mq0k.onrender.com/api/v1',
   headers: {
     'Content-Type': 'application/json'
   }
